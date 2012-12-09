@@ -6,11 +6,11 @@
 
 class Vline : public Figure {
 private:
-	void show();
+    void show();
 public:
-	Vline(QPixmap *ncanvas, int nXpos, int nYpos);
-	~Vline();
-	void match_pattern(int ** pattern);
+    Vline(QPixmap *ncanvas, int nXpos, int nYpos);
+    ~Vline();
+    void match_pattern(int ** pattern);
 };
 
 #endif //VLINE_H

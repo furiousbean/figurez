@@ -6,11 +6,11 @@
 
 class Rectangle : public Figure {
 private:
-	void show();
+    void show();
 public:
-	Rectangle(QPixmap *ncanvas, int nXpos, int nYpos);
-	~Rectangle();
-	void match_pattern(int ** pattern);
+    Rectangle(QPixmap *ncanvas, int nXpos, int nYpos);
+    ~Rectangle();
+    void match_pattern(int ** pattern);
 };
 
 #endif //RECTANGLE_H
