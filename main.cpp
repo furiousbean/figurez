@@ -1,6 +1,5 @@
 #include <QtGui>
 #include <QMainWindow>
-#include "rectangle.h"
 #include "const.h"
 #include "game.h"
 #include <cmath>
@@ -31,32 +30,53 @@ public:
     }
 };
 
+class WindowInterface {
+private:
+    QApplication *app;
+    QMainWindow *window;
+    QGridLayout *layout;
+    QPixmap *canvas;
+    QLabel *countlabel;
+    QStatusBar *tableau;
+    Game *G;
+    OutputWidget *output;
+    QMenuBar *menubar;
+    QMenu *gamemenu;
+public:
+    WindowInterface(QApplication *qapp) {
+        app = qapp;
+        int imageWidth = W * (CellWidth + LineWidth) + LineWidth;
+        int imageHeight = H * (CellHeight + LineWidth) + LineWidth;
+        window = new QMainWindow();
+        layout = new QGridLayout();
+        canvas = new QPixmap(imageWidth, imageHeight);
+        countlabel = new QLabel();
+        tableau = new QStatusBar();
+        tableau -> addWidget(countlabel);
+        G = new Game(canvas, tableau, countlabel);
+        output = new OutputWidget(canvas, G);
+        output -> setLayout(layout);
+        window -> setCentralWidget(output);
+        window -> setWindowTitle("Figurez");
+        output -> setFixedSize(imageHeight, imageHeight);
+        window -> setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        window -> setWindowIcon(QIcon("rabbit-icon.png"));
+        window -> layout() -> setSizeConstraint(QLayout::SetFixedSize);
+        window -> setStatusBar(tableau);
+        menubar = new QMenuBar;
+        gamemenu = new QMenu("Game");
+        gamemenu -> addAction("New game", G, SLOT(reset()), Qt::CTRL + Qt::Key_N);
+        gamemenu -> addAction("Exit", app, SLOT(quit()), Qt::CTRL + Qt::Key_Q);
+        QObject::connect(G, SIGNAL(repaint()), output, SLOT(repaint()));
+        menubar -> addMenu(gamemenu);
+        window -> setMenuBar(menubar);
+        window -> show();
+    }
+};
+
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
     srand(time(0));
-    int imageWidth = W * (CellWidth + LineWidth) + LineWidth;
-    int imageHeight = H * (CellHeight + LineWidth) + LineWidth;
-    QMainWindow *window = new QMainWindow();
-    QGridLayout *layout = new QGridLayout();
-    QPixmap *canvas = new QPixmap(imageWidth, imageHeight);
-    QLabel *countlabel = new QLabel();
-    QStatusBar *tableau = new QStatusBar();
-    tableau -> addWidget(countlabel);
-    Game *G = new Game(canvas, tableau, countlabel);
-    OutputWidget *output = new OutputWidget(canvas, G);
-    output -> setLayout(layout);
-    window -> setCentralWidget(output);
-    window -> setWindowTitle("Figurez");
-    output -> setFixedSize(imageHeight, imageHeight);
-    window -> setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    window -> setWindowIcon(QIcon("rabbit-icon.png"));
-    window -> layout() -> setSizeConstraint(QLayout::SetFixedSize);
-    window -> setStatusBar(tableau);
-    QMenuBar *menubar = new QMenuBar;
-    QMenu *newgame = new QMenu("New game");
-    QMenu *close = new QMenu("Exit");
-    menubar -> addMenu(newgame); menubar -> addMenu(close);
-    window -> setMenuBar(menubar);
-    window -> show();
+    WindowInterface wi(&app);
     return app.exec();
 }

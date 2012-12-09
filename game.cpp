@@ -14,6 +14,17 @@ Game::Game(QPixmap *pixmap, QStatusBar *statusbar, QLabel *label) {
     update_score(0);
 }
 
+void Game::reset() {
+    delete board;
+    board = new Board(canvas);
+    selected = 0;
+    draw_grid();
+    score = 0;
+    board -> insert_new();
+    update_score(0);
+    emit repaint();
+}
+
 Game::~Game() {
     delete(board);
 }

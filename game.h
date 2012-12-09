@@ -4,7 +4,8 @@
 #include <QtGui>
 #include "board.h"
 #include "const.h"
-class Game {
+class Game : public QObject {
+Q_OBJECT
 private:
     QPixmap *canvas;
     QStatusBar* infobar;
@@ -17,6 +18,10 @@ public:
     Game(QPixmap *pixmap, QStatusBar *statusbar, QLabel *label);
     ~Game();
     void push_field(int Xpos, int Ypos);
+public slots:
+    void reset();
+signals:
+    void repaint();
 };
 
 #endif //GAME_H
