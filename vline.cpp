@@ -4,6 +4,8 @@
 #include <QPixmap>
 #include <QPainter>
 
+const int VLineSize = 5;
+
 Vline::Vline(QPixmap *ncanvas, int nXpos, int nYpos) {
     canvas = ncanvas;
     Xpos = nXpos; Ypos = nYpos;
@@ -24,9 +26,9 @@ void Vline::show() {
 
 void Vline::match_pattern(int ** pattern) {
     for (int i = 0; i < W; i++)
-        for (int j = 0; j <= H - 5; j++) {
+        for (int j = 0; j <= H - VLineSize; j++) {
             int passed = 1;
-            for (int k = j; k < j + 5; k++) passed = passed && pattern[i][k];
-            if (passed) for (int k = j; k < j + 5; k++) pattern[i][k] = -1;
+            for (int k = j; k < j + VLineSize; k++) passed = passed && pattern[i][k];
+            if (passed) for (int k = j; k < j + VLineSize; k++) pattern[i][k] = -1;
         }
 }

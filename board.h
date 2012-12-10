@@ -1,9 +1,11 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <QPixmap>
 #include "figure.h"
 #include "const.h"
+
+class QPixmap;
+
 class Board {
 private:
     Figure* field[W][H];

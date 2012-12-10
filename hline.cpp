@@ -4,6 +4,8 @@
 #include <QPixmap>
 #include <QPainter>
 
+const int HLineSize = 5;
+
 Hline::Hline(QPixmap *ncanvas, int nXpos, int nYpos) {
     canvas = ncanvas;
     Xpos = nXpos; Ypos = nYpos;
@@ -24,9 +26,9 @@ void Hline::show() {
 
 void Hline::match_pattern(int ** pattern) {
     for (int j = 0; j < H; j++)
-        for (int i = 0; i <= W - 5; i++) {
+        for (int i = 0; i <= W - HLineSize; i++) {
             int passed = 1;
-            for (int k = i; k < i + 5; k++) passed = passed && pattern[k][j];
-            if (passed) for (int k = i; k < i + 5; k++) pattern[k][j] = -1;
+            for (int k = i; k < i + HLineSize; k++) passed = passed && pattern[k][j];
+            if (passed) for (int k = i; k < i + HLineSize; k++) pattern[k][j] = -1;
         }
 }
