@@ -70,3 +70,7 @@ void Game::update_score(int delta) {
     score += delta * ScoreMultiplier;
     emit showScore(score);
 }
+
+int Game::get_score() {
+    return score;
+}

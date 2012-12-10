@@ -15,6 +15,7 @@ private:
 public:
     Game(QPixmap *pixmap);
     ~Game();
+    int get_score();
 public slots:
     void reset();
     void push_field(int Xpos, int Ypos);

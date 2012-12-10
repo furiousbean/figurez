@@ -32,7 +32,7 @@ WindowInterface::WindowInterface(QApplication *qapp) {
     QObject::connect(output, SIGNAL(fieldPressed(int, int)), G, SLOT(push_field(int, int)));
     QObject::connect(G, SIGNAL(moveFailed()), this, SLOT(showMoveFail()));
     QObject::connect(G, SIGNAL(showScore(int)), this, SLOT(updateScore(int)));
-    updateScore(0);
+    updateScore(G -> get_score());
     menubar -> addMenu(gamemenu);
     window -> setMenuBar(menubar);
     window -> show();
