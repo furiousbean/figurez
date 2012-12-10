@@ -1,4 +1,4 @@
-#include <QtGui>
+#include <QApplication>
 #include <cmath>
 #include <ctime>
 #include "window_interface.h"

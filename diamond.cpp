@@ -1,6 +1,10 @@
 #include "figure.h"
 #include "diamond.h"
 #include "const.h"
+#include <QPixmap>
+#include <QPainter>
+#include <QPolygonF>
+
 
 Diamond::Diamond(QPixmap *ncanvas, int nXpos, int nYpos) {
     canvas = ncanvas;

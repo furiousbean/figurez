@@ -1,6 +1,8 @@
 #include "figure.h"
 #include "hline.h"
 #include "const.h"
+#include <QPixmap>
+#include <QPainter>
 
 Hline::Hline(QPixmap *ncanvas, int nXpos, int nYpos) {
     canvas = ncanvas;

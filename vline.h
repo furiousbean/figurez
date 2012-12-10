@@ -2,7 +2,7 @@
 #define VLINE_H
 
 #include "figure.h"
-#include <QtGui>
+#include <QPixmap>
 
 class Vline : public Figure {
 private:

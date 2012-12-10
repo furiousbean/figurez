@@ -2,7 +2,7 @@
 #define DIAMOND_H
 
 #include "figure.h"
-#include <QtGui>
+#include <QPixmap>
 
 class Diamond : public Figure {
 private:

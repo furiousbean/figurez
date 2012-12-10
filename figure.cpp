@@ -1,5 +1,6 @@
 #include "figure.h"
 #include "const.h"
+#include "QPainter"
 
 void Figure::hide() {
     QPainter painter(canvas);

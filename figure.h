@@ -1,7 +1,7 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
-#include <QtGui>
+#include <QPixmap>
 class Figure {
 protected:
     int type, Xpos, Ypos;

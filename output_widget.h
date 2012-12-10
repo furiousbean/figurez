@@ -1,6 +1,7 @@
 #ifndef OUTPUT_WIDGET_H
 #define OUTPUT_WIDGET_H
-#include <QtGui>
+#include <QFrame>
+#include <QPixmap>
 #include "const.h"
 #include "game.h"
 

@@ -1,6 +1,8 @@
 #include "figure.h"
 #include "rectangle.h"
 #include "const.h"
+#include <QPixmap>
+#include <QPainter>
 
 Rectangle::Rectangle(QPixmap *ncanvas, int nXpos, int nYpos) {
     canvas = ncanvas;

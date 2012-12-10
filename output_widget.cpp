@@ -1,4 +1,8 @@
-#include <QtGui>
+#include <QPixmap>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QMouseEvent>
+
 #include "const.h"
 #include "output_widget.h"
 

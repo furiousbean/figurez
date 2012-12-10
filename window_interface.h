@@ -1,7 +1,14 @@
 #ifndef WINDOW_INTERFACE_H
 #define WINDOW_INTERFACE_H
+#include <QApplication>
+#include <QMainWindow>
+#include <QGridLayout>
+#include <QPixmap>
+#include <QLabel>
+#include <QStatusBar>
+#include <QMenuBar>
+#include <QMenu>
 
-#include <QtGui>
 #include "const.h"
 #include "game.h"
 #include "output_widget.h"

@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <QtGui>
+#include <QPixmap>
 #include "figure.h"
 #include "const.h"
 class Board {

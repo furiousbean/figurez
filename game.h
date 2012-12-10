@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <QtGui>
+#include <QPixmap>
 #include "board.h"
 #include "const.h"
 class Game : public QObject {

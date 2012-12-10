@@ -1,6 +1,7 @@
 #include "const.h"
 #include "board.h"
 #include "game.h"
+#include <QPainter>
 
 Game::Game(QPixmap *pixmap) {
     canvas = pixmap;

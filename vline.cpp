@@ -1,6 +1,8 @@
 #include "figure.h"
 #include "vline.h"
 #include "const.h"
+#include <QPixmap>
+#include <QPainter>
 
 Vline::Vline(QPixmap *ncanvas, int nXpos, int nYpos) {
     canvas = ncanvas;

@@ -1,4 +1,11 @@
-#include <QtGui>
+#include <QApplication>
+#include <QMainWindow>
+#include <QGridLayout>
+#include <QPixmap>
+#include <QLabel>
+#include <QStatusBar>
+#include <QMenuBar>
+#include <QMenu>
 #include "const.h"
 #include "game.h"
 #include "output_widget.h"

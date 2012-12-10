@@ -2,7 +2,7 @@
 #define HLINE_H
 
 #include "figure.h"
-#include <QtGui>
+#include <QPixmap>
 
 class Hline : public Figure {
 private:
