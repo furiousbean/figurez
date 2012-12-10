@@ -2,10 +2,8 @@
 #include "board.h"
 #include "game.h"
 
-Game::Game(QPixmap *pixmap, QStatusBar *statusbar, QLabel *label) {
+Game::Game(QPixmap *pixmap) {
     canvas = pixmap;
-    infobar = statusbar;
-    scorelabel = label;
     board = new Board(canvas);
     selected = 0;
     draw_grid();
@@ -37,7 +35,7 @@ void Game::push_field(int Xpos, int Ypos) {
             Xsel = Xpos; Ysel = Ypos; selected = 1;
         } else {
             int result = board -> move(Xsel, Ysel, Xpos, Ypos);
-            if (!result) infobar -> showMessage("Can't move it: there's no way.", 2000); else {
+            if (!result) emit moveFailed(); else {
                 int delta = board -> get_delta();
                 if (delta) update_score(delta); else {
                     board -> insert_new();
@@ -52,6 +50,7 @@ void Game::push_field(int Xpos, int Ypos) {
             Xsel = Xpos; Ysel = Ypos; selected = 1;
         }
     }
+    emit repaint();
 }
 
 void Game::draw_grid() {
@@ -69,5 +68,5 @@ void Game::draw_grid() {
 
 void Game::update_score(int delta) {
     score += delta * ScoreMultiplier;
-    scorelabel -> setText("Score: " + QString::number(score));
+    emit showScore(score);
 }

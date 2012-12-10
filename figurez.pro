@@ -6,7 +6,9 @@ SOURCES	 += main.cpp \
            game.cpp \
            hline.cpp \
            vline.cpp \
-           diamond.cpp
+           diamond.cpp \
+           output_widget.cpp \
+           window_interface.cpp
 HEADERS += figure.h \
           rectangle.h \
           const.h \
@@ -14,5 +16,7 @@ HEADERS += figure.h \
           game.h \
           hline.h \
           vline.h \
-          diamond.h
+          diamond.h \
+          output_widget.h \
+          window_interface.h
 win32:TARGET	 = ../figurez

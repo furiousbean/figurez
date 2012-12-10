@@ -12,7 +12,7 @@
 
 Board::Board(QPixmap *pixmap) {
     canvas = pixmap;
-	for (int i = 0; i < W; i++)
+    for (int i = 0; i < W; i++)
         for (int j = 0; j < H; j++)
             field[i][j] = 0;
     delta = 0;
