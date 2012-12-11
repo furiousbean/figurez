@@ -6,11 +6,11 @@
 
 class Hline : public Figure {
 private:
-    void show();
+    virtual void show();
 public:
     Hline(QPixmap *ncanvas, int nXpos, int nYpos);
     ~Hline();
-    void match_pattern(int ** pattern);
+    virtual void match_pattern(int ** pattern);
 };
 
 #endif //HLINE_H
