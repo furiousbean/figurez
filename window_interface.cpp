@@ -11,7 +11,7 @@
 #include "output_widget.h"
 #include "window_interface.h"
 
-WindowInterface::WindowInterface(QApplication *qapp) { //creates window, initializes game
+WindowInterface::WindowInterface(QApplication *qapp) {
     app = qapp;
     int imageWidth = W * (CellWidth + LineWidth) + LineWidth;
     int imageHeight = H * (CellHeight + LineWidth) + LineWidth;
@@ -33,7 +33,7 @@ WindowInterface::WindowInterface(QApplication *qapp) { //creates window, initial
     window -> setStatusBar(tableau);
     menubar = new QMenuBar;
     gamemenu = new QMenu("Game");
-    gamemenu -> addAction("New game", G, SLOT(reset()), Qt::CTRL + Qt::Key_N); //connect game slots & signals with window interface
+    gamemenu -> addAction("New game", G, SLOT(reset()), Qt::CTRL + Qt::Key_N); /**< connect game slots & signals with window interface */
     gamemenu -> addAction("Exit", app, SLOT(quit()), Qt::CTRL + Qt::Key_Q);
     QObject::connect(G, SIGNAL(repaint()), output, SLOT(repaint()));
     QObject::connect(output, SIGNAL(fieldPressed(int, int)), G, SLOT(push_field(int, int)));

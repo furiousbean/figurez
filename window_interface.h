@@ -13,6 +13,10 @@
 #include "game.h"
 #include "output_widget.h"
 
+/*!
+ * A window interface class
+ */
+
 class WindowInterface : public QObject {
 Q_OBJECT
 private:

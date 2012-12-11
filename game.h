@@ -4,21 +4,26 @@
 #include <QPixmap>
 #include "board.h"
 #include "const.h"
+
+/*!
+ * Game logic implemetation
+ */
+
 class Game : public QObject {
 Q_OBJECT
 private:
     QPixmap *canvas;
     Board* board;
     int selected, Xsel, Ysel, score;
-    void draw_grid();
-    void update_score(int delta);
+    void draw_grid(); /**< Draw empty grid */
+    void update_score(int delta); /**< Update score by delta */
 public:
     Game(QPixmap *pixmap);
     ~Game();
-    int get_score();
+    int get_score(); /**< Return current score */
 public slots:
-    void reset();
-    void push_field(int Xpos, int Ypos);
+    void reset(); /**< Reset game */
+    void push_field(int Xpos, int Ypos); /**< Receives a mouse click to game field */
 signals:
     void repaint();
     void moveFailed();

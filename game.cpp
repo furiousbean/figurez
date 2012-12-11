@@ -28,7 +28,7 @@ Game::~Game() {
     delete(board);
 }
 
-void Game::push_field(int Xpos, int Ypos) { //a method which implements game logic
+void Game::push_field(int Xpos, int Ypos) {
     if (selected) {
         if (board -> have_something(Xpos, Ypos)) {
             board -> remove_selection(Xsel, Ysel);
@@ -54,7 +54,7 @@ void Game::push_field(int Xpos, int Ypos) { //a method which implements game log
     emit repaint();
 }
 
-void Game::draw_grid() { //initiate game image
+void Game::draw_grid() {
     QPainter painter(canvas);
     painter.fillRect(QRect(0, 0, canvas -> width(), canvas -> height()),  Qt::white);
     painter.setPen(QPen(Qt::gray, LineWidth, Qt::SolidLine, Qt::RoundCap,

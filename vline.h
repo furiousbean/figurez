@@ -9,7 +9,6 @@ private:
     virtual void show();
 public:
     Vline(QPixmap *ncanvas, int nXpos, int nYpos);
-    ~Vline();
     virtual void match_pattern(int ** pattern);
 };
 

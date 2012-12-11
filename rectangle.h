@@ -9,7 +9,6 @@ private:
     virtual void show();
 public:
     Rectangle(QPixmap *ncanvas, int nXpos, int nYpos);
-    ~Rectangle();
     virtual void match_pattern(int ** pattern);
 };
 

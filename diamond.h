@@ -9,7 +9,6 @@ private:
     virtual void show();
 public:
     Diamond(QPixmap *ncanvas, int nXpos, int nYpos);
-    ~Diamond();
     virtual void match_pattern(int ** pattern);
 };
 
