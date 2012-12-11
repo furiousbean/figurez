@@ -10,7 +10,7 @@
 #include <cmath>
 
 
-Board::Board(QPixmap *pixmap) {
+Board::Board(QPixmap *pixmap) { //initiates empty board
     canvas = pixmap;
     for (int i = 0; i < W; i++)
         for (int j = 0; j < H; j++)
@@ -36,7 +36,7 @@ void Board::remove_selection(int Xpos, int Ypos) {
     field[Xpos][Ypos] -> remove_selection();
 }
 
-void Board::insert_new() {
+void Board::insert_new() { //adds new figures to board
     QVector<QPair<int, int> > LuckWheel;
     for (int i = 0; i < W; i++)
         for (int j = 0; j < H; j++)
@@ -63,7 +63,7 @@ int Board::get_delta() {
     return tmp;
 }
 
-int Board::move(int Xold, int Yold, int Xnew, int Ynew) {
+int Board::move(int Xold, int Yold, int Xnew, int Ynew) { //move figure in board from old to new position
     int **markField = new int*[W];
     for (int i = 0; i < W; i++)
         markField[i] = new int[H];
@@ -84,7 +84,7 @@ int Board::move(int Xold, int Yold, int Xnew, int Ynew) {
     return 1;
 }
 
-void Board::rec_check(int ** markField, int Xpos, int Ypos) {
+void Board::rec_check(int ** markField, int Xpos, int Ypos) { //recursive check for move ability
     markField[Xpos][Ypos] = 1;
     if (Xpos > 0 && ! markField[Xpos - 1][Ypos]) rec_check(markField, Xpos - 1, Ypos);
     if (Xpos < W - 1 && ! markField[Xpos + 1][Ypos]) rec_check(markField, Xpos + 1, Ypos);
@@ -92,7 +92,7 @@ void Board::rec_check(int ** markField, int Xpos, int Ypos) {
     if (Ypos < H - 1 && ! markField[Xpos][Ypos + 1]) rec_check(markField, Xpos, Ypos + 1);
 }
 
-void Board::remove_figs(int Xpos, int Ypos) {
+void Board::remove_figs(int Xpos, int Ypos) { //remove a figure connected with (Xpos, Ypos) cell
     int **patternField = new int*[W];
     for (int i = 0; i < W; i++)
         patternField[i] = new int[H];
@@ -101,7 +101,7 @@ void Board::remove_figs(int Xpos, int Ypos) {
             if (have_something(i, j))
                 patternField[i][j] = field[Xpos][Ypos] -> get_type() == field[i][j] -> get_type();
             else patternField[i][j] = 0;
-    field[Xpos][Ypos] -> match_pattern(patternField);
+    field[Xpos][Ypos] -> match_pattern(patternField); //get a pattern with positions to remove
     for (int i = 0; i < W; i++)
         for (int j = 0; j < H; j++)
             if (patternField[i][j] == -1) {

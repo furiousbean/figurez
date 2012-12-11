@@ -5,6 +5,8 @@
 #include "const.h"
 #include "game.h"
 
+//object which show current game picture
+
 class OutputWidget : public QFrame {
 Q_OBJECT
 private:
