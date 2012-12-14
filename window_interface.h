@@ -1,13 +1,6 @@
 #ifndef WINDOW_INTERFACE_H
 #define WINDOW_INTERFACE_H
-#include <QApplication>
 #include <QMainWindow>
-#include <QGridLayout>
-#include <QPixmap>
-#include <QLabel>
-#include <QStatusBar>
-#include <QMenuBar>
-#include <QMenu>
 
 #include "const.h"
 #include "game.h"
@@ -17,12 +10,21 @@
  * A window interface class
  */
 
-class WindowInterface : public QObject {
+class QGridLayout;
+class QCloseEvent;
+class QPixmap;
+class QLabel;
+class QStatusBar;
+class QMenuBar;
+class QMenu;
+
+class WindowInterface : public QMainWindow {
 Q_OBJECT
+protected:
+    void closeEvent(QCloseEvent *event);
 private:
-    QApplication *app;
-    QMainWindow *window;
-    QGridLayout *layout;
+    QGridLayout *windowlayout;
+    QGridLayout *canvlayout;
     QPixmap *canvas;
     QLabel *scorelabel;
     QStatusBar *tableau;
@@ -32,10 +34,12 @@ private:
     QMenuBar *menubar;
     QMenu *gamemenu;
 public:
-    WindowInterface(QApplication *qapp, GameParams *gp);
+    WindowInterface(GameParams *gp);
+    ~WindowInterface();
 public slots:
     void showMoveFail();
     void updateScore(int score);
+
 };
 
 #endif //WINDOW_INTERFACE_H
