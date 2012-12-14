@@ -8,7 +8,8 @@ SOURCES	 += main.cpp \
            vline.cpp \
            diamond.cpp \
            output_widget.cpp \
-           window_interface.cpp
+           window_interface.cpp \
+           const.cpp
 HEADERS += figure.h \
           rectangle.h \
           const.h \
