@@ -6,6 +6,12 @@
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
     srand(time(0));
-    WindowInterface wi(&app);
+    GameParams gp;
+
+    WindowInterface wi(&gp);
+
+    //GameParams gp2(10, 15, 24, 24, 1, 5, 2);
+    //WindowInterface wi2(&gp2);
+
     return app.exec();
 }
