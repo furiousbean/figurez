@@ -28,8 +28,8 @@ void Diamond::show() {
 }
 
 void Diamond::match_pattern(int ** pattern) {
-    for (int i = 1; i < Gp -> get_W() - 1; i++)
-        for (int j = 1; j < Gp -> get_H() - 1; j++)
+    for (int i = 1; i < Gp -> get_W() - 1; ++i)
+        for (int j = 1; j < Gp -> get_H() - 1; ++j)
             if (pattern[i][j] && pattern[i + 1][j] && pattern[i - 1][j]  
                 && pattern[i][j + 1] && pattern[i][j - 1]) {
                     pattern[i][j] = -1;

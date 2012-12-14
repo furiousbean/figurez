@@ -22,11 +22,11 @@ void Vline::show() {
 }
 
 void Vline::match_pattern(int ** pattern) {
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j <= Gp -> get_H() - VLineSize; j++) {
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j <= Gp -> get_H() - VLineSize; ++j) {
             int passed = 1;
-            for (int k = j; k < j + VLineSize; k++) passed = passed && pattern[i][k];
-            if (passed) for (int k = j; k < j + VLineSize; k++) pattern[i][k] = -1;
+            for (int k = j; k < j + VLineSize; ++k) passed = passed && pattern[i][k];
+            if (passed) for (int k = j; k < j + VLineSize; ++k) pattern[i][k] = -1;
         }
 }
 

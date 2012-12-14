@@ -14,19 +14,19 @@ Board::Board(QPixmap *pixmap, GameParams *gp) {
     canvas = pixmap;
     Gp = gp;
     field = new Figure**[Gp -> get_W()];
-    for (int i = 0; i < Gp -> get_W(); i++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
         field[i] = new Figure*[Gp -> get_H()];
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j < Gp -> get_H(); j++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
             field[i][j] = 0;
     delta = 0;
 }
 
 Board::~Board() {
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j < Gp -> get_H(); j++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
             if (have_something(i, j)) delete(field[i][j]);
-    for (int i = 0; i < Gp -> get_W(); i++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
         delete [] field[i];
     delete [] field;
 }
@@ -45,11 +45,11 @@ void Board::remove_selection(int Xpos, int Ypos) {
 
 void Board::insert_new() { 
     QVector<QPair<int, int> > LuckWheel;
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j < Gp -> get_H(); j++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
             if (!have_something(i, j)) LuckWheel.push_back(qMakePair(i, j));
 
-    for (int k = 0; k < Gp -> get_NewFCount() && !LuckWheel.isEmpty(); k++) {
+    for (int k = 0; k < Gp -> get_NewFCount() && !LuckWheel.isEmpty(); ++k) {
         int p = rand() % LuckWheel.size();
         int frand = rand() % 4;
         
@@ -74,15 +74,15 @@ int Board::get_delta() {
 
 int Board::move(int Xold, int Yold, int Xnew, int Ynew) {
     int **markField = new int*[Gp -> get_W()];
-    for (int i = 0; i < Gp -> get_W(); i++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
         markField[i] = new int[Gp -> get_H()];
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j < Gp -> get_H(); j++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
             markField[i][j] = have_something(i, j);
 
     rec_check(markField, Xold, Yold);
     int passed = markField[Xnew][Ynew];
-    for (int i = 0; i < Gp -> get_W(); i++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
         delete [] markField[i];
     delete [] markField;
 
@@ -104,25 +104,25 @@ void Board::rec_check(int ** markField, int Xpos, int Ypos) {
 void Board::remove_figs(int Xpos, int Ypos) {
     int **patternField = new int*[Gp -> get_W()];
 
-    for (int i = 0; i < Gp -> get_W(); i++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
         patternField[i] = new int[Gp -> get_H()];
 
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j < Gp -> get_H(); j++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
             if (have_something(i, j))
                 patternField[i][j] = field[Xpos][Ypos] -> get_type() == field[i][j] -> get_type();
             else patternField[i][j] = 0;
 
     field[Xpos][Ypos] -> match_pattern(patternField);
 
-    for (int i = 0; i < Gp -> get_W(); i++)
-        for (int j = 0; j < Gp -> get_H(); j++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
             if (patternField[i][j] == -1) {
                 delta++;
                 delete field[i][j];
                 field[i][j] = 0;
             }
-    for (int i = 0; i < Gp -> get_W(); i++)
+    for (int i = 0; i < Gp -> get_W(); ++i)
         delete [] patternField[i];
     delete [] patternField;
 }

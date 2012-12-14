@@ -60,10 +60,10 @@ void Game::draw_grid() {
     painter.fillRect(QRect(0, 0, canvas -> width(), canvas -> height()),  Qt::white);
     painter.setPen(QPen(Qt::gray, Gp -> get_LineWidth(), Qt::SolidLine, Qt::RoundCap,
         Qt::MiterJoin));
-    for (int i = 0; i <= Gp -> get_W(); i++)
+    for (int i = 0; i <= Gp -> get_W(); ++i)
         painter.drawLine(QPointF(i * (Gp -> get_CellWidth() + Gp -> get_LineWidth()) + Gp -> get_LineWidth() / 2, 0), 
             QPointF(i * (Gp -> get_CellWidth() + Gp -> get_LineWidth())  + Gp -> get_LineWidth() / 2, canvas -> height()));
-    for (int i = 0; i <= Gp -> get_H(); i++)
+    for (int i = 0; i <= Gp -> get_H(); ++i)
         painter.drawLine(QPointF(0, i * (Gp -> get_CellHeight() + Gp -> get_LineWidth()) + Gp -> get_LineWidth() / 2), 
             QPointF(canvas -> width(), i * (Gp -> get_CellHeight() + Gp -> get_LineWidth())  + Gp -> get_LineWidth() / 2));
 }

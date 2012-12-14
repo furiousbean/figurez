@@ -23,11 +23,11 @@ void Hline::show() {
 }
 
 void Hline::match_pattern(int ** pattern) {
-    for (int j = 0; j < Gp -> get_H(); j++)
-        for (int i = 0; i <= Gp -> get_W() - HLineSize; i++) {
+    for (int j = 0; j < Gp -> get_H(); ++j)
+        for (int i = 0; i <= Gp -> get_W() - HLineSize; ++i) {
             int passed = 1;
-            for (int k = i; k < i + HLineSize; k++) passed = passed && pattern[k][j];
-            if (passed) for (int k = i; k < i + HLineSize; k++) pattern[k][j] = -1;
+            for (int k = i; k < i + HLineSize; ++k) passed = passed && pattern[k][j];
+            if (passed) for (int k = i; k < i + HLineSize; ++k) pattern[k][j] = -1;
         }
 }
 
