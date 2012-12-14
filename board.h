@@ -12,13 +12,14 @@ class QPixmap;
 
 class Board {
 private:
-    Figure* field[W][H];
+    Figure *** field;
     QPixmap *canvas;
+    GameParams *Gp;
     int delta;
     void remove_figs(int Xpos, int Ypos); /**< remove a figure connected with (Xpos, Ypos) cell */
     void rec_check(int ** markField, int Xpos, int Ypos); /**< recursive check for move ability */
 public:
-    Board(QPixmap *pixmap); /**< initiates empty board */
+    Board(QPixmap *pixmap, GameParams *gp); /**< initiates empty board */
     ~Board();
     int have_something(int Xpos, int Ypos); /**< check cell for having a figure */
     void draw_selection(int Xpos, int Ypos);

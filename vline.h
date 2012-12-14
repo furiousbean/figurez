@@ -8,8 +8,9 @@ class Vline : public Figure {
 private:
     virtual void show();
 public:
-    Vline(QPixmap *ncanvas, int nXpos, int nYpos);
+    Vline(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos);
     virtual void match_pattern(int ** pattern);
+    virtual int get_type() const;
 };
 
 #endif //VLINE_H

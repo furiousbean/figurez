@@ -3,9 +3,10 @@
 #include "game.h"
 #include <QPainter>
 
-Game::Game(QPixmap *pixmap) {
+Game::Game(QPixmap *pixmap, GameParams *gp) {
     canvas = pixmap;
-    board = new Board(canvas);
+    Gp = gp;
+    board = new Board(canvas, Gp);
     selected = 0;
     draw_grid();
     score = 0;
@@ -15,7 +16,7 @@ Game::Game(QPixmap *pixmap) {
 
 void Game::reset() {
     delete board;
-    board = new Board(canvas);
+    board = new Board(canvas, Gp);
     selected = 0;
     draw_grid();
     score = 0;
@@ -57,18 +58,18 @@ void Game::push_field(int Xpos, int Ypos) {
 void Game::draw_grid() {
     QPainter painter(canvas);
     painter.fillRect(QRect(0, 0, canvas -> width(), canvas -> height()),  Qt::white);
-    painter.setPen(QPen(Qt::gray, LineWidth, Qt::SolidLine, Qt::RoundCap,
+    painter.setPen(QPen(Qt::gray, Gp -> get_LineWidth(), Qt::SolidLine, Qt::RoundCap,
         Qt::MiterJoin));
-    for (int i = 0; i <= W; i++)
-        painter.drawLine(QPointF(i * (CellWidth + LineWidth) + LineWidth / 2, 0), 
-            QPointF(i * (CellWidth + LineWidth)  + LineWidth / 2, canvas -> height()));
-    for (int i = 0; i <= H; i++)
-        painter.drawLine(QPointF(0, i * (CellHeight + LineWidth)  + LineWidth / 2), 
-            QPointF(canvas -> width(), i * (CellHeight + LineWidth)  + LineWidth / 2));
+    for (int i = 0; i <= Gp -> get_W(); i++)
+        painter.drawLine(QPointF(i * (Gp -> get_CellWidth() + Gp -> get_LineWidth()) + Gp -> get_LineWidth() / 2, 0), 
+            QPointF(i * (Gp -> get_CellWidth() + Gp -> get_LineWidth())  + Gp -> get_LineWidth() / 2, canvas -> height()));
+    for (int i = 0; i <= Gp -> get_H(); i++)
+        painter.drawLine(QPointF(0, i * (Gp -> get_CellHeight() + Gp -> get_LineWidth()) + Gp -> get_LineWidth() / 2), 
+            QPointF(canvas -> width(), i * (Gp -> get_CellHeight() + Gp -> get_LineWidth())  + Gp -> get_LineWidth() / 2));
 }
 
 void Game::update_score(int delta) {
-    score += delta * ScoreMultiplier;
+    score += delta * Gp -> get_ScoreMultiplier();
     emit showScore(score);
 }
 

@@ -1,6 +1,8 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
+#include "const.h"
+
 class QPixmap;
 
 /*!
@@ -9,18 +11,20 @@ class QPixmap;
 
 class Figure {
 protected:
-    int type, Xpos, Ypos;
+    int Xpos, Ypos;
     QPixmap *canvas;
+    GameParams *Gp;
     virtual void show() = 0; /**< method which draw a figure */
     void hide(); /**< hides figure */
     void select(); /**< draw selection background */
 
 public:
+    Figure(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos);
     void draw_selection(); /**< makes figure selected */
     void remove_selection(); /**< makes figure unselected */
     void move(int nXPos, int nYPos); /**< repaints figure in new position */
     virtual void match_pattern(int ** pattern) = 0; /**< returns matrix with remove positions */
-    int get_type(); /**< returns figure type */
+    virtual int get_type() const = 0; /**< returns figure type */
     virtual ~Figure();
 };
 

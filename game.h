@@ -13,12 +13,13 @@ class Game : public QObject {
 Q_OBJECT
 private:
     QPixmap *canvas;
-    Board* board;
+    Board *board;
+    GameParams *Gp;
     int selected, Xsel, Ysel, score;
     void draw_grid(); /**< Draw empty grid */
     void update_score(int delta); /**< Update score by delta */
 public:
-    Game(QPixmap *pixmap);
+    Game(QPixmap *pixmap, GameParams *gp);
     ~Game();
     int get_score(); /**< Return current score */
 public slots:

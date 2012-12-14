@@ -13,11 +13,12 @@ class OutputWidget : public QFrame {
 Q_OBJECT
 private:
     QPixmap *canvas;
+    GameParams *Gp;
 protected:
     virtual void paintEvent(QPaintEvent*);
     virtual void mousePressEvent(QMouseEvent* event);
 public:
-    OutputWidget(QPixmap* pixmap);
+    OutputWidget(QPixmap* pixmap, GameParams *gp);
 signals:
     void fieldPressed(int, int);
 };

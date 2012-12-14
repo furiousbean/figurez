@@ -8,8 +8,9 @@ class Rectangle : public Figure {
 private:
     virtual void show();
 public:
-    Rectangle(QPixmap *ncanvas, int nXpos, int nYpos);
+    Rectangle(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos);
     virtual void match_pattern(int ** pattern);
+    virtual int get_type() const;
 };
 
 #endif //RECTANGLE_H

@@ -14,11 +14,12 @@ void OutputWidget::paintEvent(QPaintEvent*) {
 void OutputWidget::mousePressEvent(QMouseEvent* event) {
     int x = event -> x();
     int y = event -> y();
-    int Xpos = (x - LineWidth) / (CellWidth + LineWidth);
-    int Ypos = (y - LineWidth) / (CellHeight + LineWidth);
+    int Xpos = (x - Gp -> get_LineWidth()) / (Gp -> get_CellWidth() + Gp -> get_LineWidth());
+    int Ypos = (y - Gp -> get_LineWidth()) / (Gp -> get_CellHeight() + Gp -> get_LineWidth());
     emit fieldPressed(Xpos, Ypos);
 }
 
-OutputWidget::OutputWidget(QPixmap* pixmap) {
+OutputWidget::OutputWidget(QPixmap* pixmap, GameParams *gp) {
     canvas = pixmap;
+    Gp = gp;
 }
