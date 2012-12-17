@@ -8,10 +8,8 @@ int main(int argc, char** argv) {
     srand(time(0));
     GameParams gp;
 
-    WindowInterface wi(&gp);
-
-    //GameParams gp2(10, 15, 24, 24, 1, 5, 2);
-    //WindowInterface wi2(&gp2);
+    WindowInterface wi(gp);
+    //WindowInterface wi2(wi);
 
     return app.exec();
 }
