@@ -14,6 +14,16 @@ Game::Game(QPixmap &pixmap, const GameParams &gp) {
     update_score(0);
 }
 
+Game::Game(const Game &game, QPixmap &pixmap) {
+    canvas = &pixmap;
+    Gp = game.Gp;
+    board = new Board(*game.board, *canvas);
+    selected = game.selected;
+    score = game.score;
+    Xsel = game.Xsel; Ysel = game.Ysel;
+}
+
+
 void Game::reset() {
     delete board;
     board = new Board(*canvas, *Gp);

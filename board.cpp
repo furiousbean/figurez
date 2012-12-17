@@ -9,6 +9,29 @@
 #include <QPair>
 #include <cmath>
 
+Board::Board(const Board &brd, QPixmap &pixmap) {
+    canvas = &pixmap;
+    Gp = brd.Gp;
+    field = new Figure**[Gp -> get_W()];
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        field[i] = new Figure*[Gp -> get_H()];
+    for (int i = 0; i < Gp -> get_W(); ++i)
+        for (int j = 0; j < Gp -> get_H(); ++j)
+            if (brd.have_something(i, j)) {
+                int type = brd.field[i][j] -> get_type();
+                switch(type) {
+                    case 0: field[i][j] = new Rectangle(*canvas, *Gp, i, j);
+                    break;
+                    case 1: field[i][j] = new Vline(*canvas, *Gp, i, j);
+                    break;
+                    case 2: field[i][j] = new Hline(*canvas, *Gp, i, j);
+                    break;
+                    case 3: field[i][j] = new Diamond(*canvas, *Gp, i, j);
+                }
+            } else field[i][j] = 0;
+    delta = brd.delta;
+}
+
 
 Board::Board(QPixmap &pixmap, const GameParams &gp) {
     canvas = &pixmap;

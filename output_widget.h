@@ -19,6 +19,7 @@ protected:
     virtual void mousePressEvent(QMouseEvent* event);
 public:
     OutputWidget(QPixmap* pixmap, const GameParams &gp);
+    OutputWidget(const OutputWidget &ow, QPixmap* pixmap);
 signals:
     void fieldPressed(int, int);
 };

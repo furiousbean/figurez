@@ -35,6 +35,7 @@ private:
     QMenu *gamemenu;
 public:
     WindowInterface(const GameParams &gp);
+    WindowInterface(const WindowInterface &wi);
     ~WindowInterface();
 public slots:
     void showMoveFail();

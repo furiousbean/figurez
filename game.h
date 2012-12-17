@@ -20,6 +20,7 @@ private:
     void update_score(int delta); /**< Update score by delta */
 public:
     Game(QPixmap &pixmap, const GameParams &gp);
+    Game(const Game &game, QPixmap &pixmap);
     ~Game();
     int get_score() const; /**< Return current score */
 public slots:

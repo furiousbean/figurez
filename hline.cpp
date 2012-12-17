@@ -10,7 +10,6 @@ Hline::Hline(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpos) : Fig
     show();
 }
 
-
 void Hline::show() {
     QPainter painter(canvas);
     QBrush brush(QColor(220, 20, 60, 255));

@@ -8,7 +8,6 @@ Rectangle::Rectangle(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpo
     show();
 }
 
-
 void Rectangle::show() {
     QPainter painter(canvas);
     QBrush brush(QColor(0, 168, 107, 255));

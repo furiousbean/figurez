@@ -23,3 +23,8 @@ OutputWidget::OutputWidget(QPixmap* pixmap, const GameParams &gp) {
     canvas = pixmap;
     Gp = &gp;
 }
+
+OutputWidget::OutputWidget(const OutputWidget &ow, QPixmap* pixmap) : QFrame() {
+    canvas = pixmap;
+    Gp = ow.Gp;
+}

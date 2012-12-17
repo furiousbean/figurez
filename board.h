@@ -20,6 +20,7 @@ private:
     void rec_check(int ** markField, int Xpos, int Ypos); /**< recursive check for move ability */
 public:
     Board(QPixmap &pixmap, const GameParams &gp); /**< initiates empty board */
+    Board(const Board &brd, QPixmap &pixmap);
     ~Board();
     int have_something(int Xpos, int Ypos) const; /**< check cell for having a figure */
     void draw_selection(int Xpos, int Ypos) const;
