@@ -3,10 +3,10 @@
 #include "game.h"
 #include <QPainter>
 
-Game::Game(QPixmap *pixmap, GameParams *gp) {
-    canvas = pixmap;
-    Gp = gp;
-    board = new Board(canvas, Gp);
+Game::Game(QPixmap &pixmap, const GameParams &gp) {
+    canvas = &pixmap;
+    Gp = &gp;
+    board = new Board(*canvas, *Gp);
     selected = 0;
     draw_grid();
     score = 0;
@@ -16,7 +16,7 @@ Game::Game(QPixmap *pixmap, GameParams *gp) {
 
 void Game::reset() {
     delete board;
-    board = new Board(canvas, Gp);
+    board = new Board(*canvas, *Gp);
     selected = 0;
     draw_grid();
     score = 0;
@@ -73,6 +73,6 @@ void Game::update_score(int delta) {
     emit showScore(score);
 }
 
-int Game::get_score() {
+int Game::get_score() const{
     return score;
 }

@@ -19,7 +19,7 @@ void OutputWidget::mousePressEvent(QMouseEvent* event) {
     emit fieldPressed(Xpos, Ypos);
 }
 
-OutputWidget::OutputWidget(QPixmap* pixmap, GameParams *gp) {
+OutputWidget::OutputWidget(QPixmap* pixmap, const GameParams &gp) {
     canvas = pixmap;
-    Gp = gp;
+    Gp = &gp;
 }

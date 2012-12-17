@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QPolygonF>
 
-Diamond::Diamond(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) {
+Diamond::Diamond(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) {
     show();
 }
 
@@ -27,7 +27,7 @@ void Diamond::show() {
     painter.drawPolygon(polygon);
 }
 
-void Diamond::match_pattern(int ** pattern) {
+void Diamond::match_pattern(int ** pattern) const {
     for (int i = 1; i < Gp -> get_W() - 1; ++i)
         for (int j = 1; j < Gp -> get_H() - 1; ++j)
             if (pattern[i][j] && pattern[i + 1][j] && pattern[i - 1][j]  

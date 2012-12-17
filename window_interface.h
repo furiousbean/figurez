@@ -29,12 +29,12 @@ private:
     QLabel *scorelabel;
     QStatusBar *tableau;
     Game *G;
-    GameParams *Gp;
+    const GameParams *Gp;
     OutputWidget *output;
     QMenuBar *menubar;
     QMenu *gamemenu;
 public:
-    WindowInterface(GameParams *gp);
+    WindowInterface(const GameParams &gp);
     ~WindowInterface();
 public slots:
     void showMoveFail();

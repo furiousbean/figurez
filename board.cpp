@@ -10,9 +10,9 @@
 #include <cmath>
 
 
-Board::Board(QPixmap *pixmap, GameParams *gp) {
-    canvas = pixmap;
-    Gp = gp;
+Board::Board(QPixmap &pixmap, const GameParams &gp) {
+    canvas = &pixmap;
+    Gp = &gp;
     field = new Figure**[Gp -> get_W()];
     for (int i = 0; i < Gp -> get_W(); ++i)
         field[i] = new Figure*[Gp -> get_H()];
@@ -31,15 +31,15 @@ Board::~Board() {
     delete [] field;
 }
 
-int Board::have_something(int Xpos, int Ypos) {
+int Board::have_something(int Xpos, int Ypos) const {
     return (field[Xpos][Ypos] != 0);
 }
 
-void Board::draw_selection(int Xpos, int Ypos) {
+void Board::draw_selection(int Xpos, int Ypos) const {
     field[Xpos][Ypos] -> draw_selection();
 }
 
-void Board::remove_selection(int Xpos, int Ypos) {
+void Board::remove_selection(int Xpos, int Ypos) const {
     field[Xpos][Ypos] -> remove_selection();
 }
 
@@ -54,13 +54,13 @@ void Board::insert_new() {
         int frand = rand() % 4;
         
         switch(frand) {
-            case 0: field[LuckWheel[p].first][LuckWheel[p].second] = new Rectangle(canvas, Gp, LuckWheel[p].first, LuckWheel[p].second);
+            case 0: field[LuckWheel[p].first][LuckWheel[p].second] = new Rectangle(*canvas, *Gp, LuckWheel[p].first, LuckWheel[p].second);
             break;
-            case 1: field[LuckWheel[p].first][LuckWheel[p].second] = new Hline(canvas, Gp, LuckWheel[p].first, LuckWheel[p].second);
+            case 1: field[LuckWheel[p].first][LuckWheel[p].second] = new Hline(*canvas, *Gp, LuckWheel[p].first, LuckWheel[p].second);
             break;
-            case 2: field[LuckWheel[p].first][LuckWheel[p].second] = new Vline(canvas, Gp, LuckWheel[p].first, LuckWheel[p].second);
+            case 2: field[LuckWheel[p].first][LuckWheel[p].second] = new Vline(*canvas, *Gp, LuckWheel[p].first, LuckWheel[p].second);
             break;
-            case 3: field[LuckWheel[p].first][LuckWheel[p].second] = new Diamond(canvas, Gp, LuckWheel[p].first, LuckWheel[p].second);		  
+            case 3: field[LuckWheel[p].first][LuckWheel[p].second] = new Diamond(*canvas, *Gp, LuckWheel[p].first, LuckWheel[p].second);		  
         }
         remove_figs(LuckWheel[p].first, LuckWheel[p].second);
         LuckWheel.remove(p);

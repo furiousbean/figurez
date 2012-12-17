@@ -11,8 +11,8 @@
 #include "output_widget.h"
 #include "window_interface.h"
 
-WindowInterface::WindowInterface(GameParams *gp) {
-    Gp = gp;
+WindowInterface::WindowInterface(const GameParams &gp) {
+    Gp = &gp;
     int imageWidth = Gp -> get_W() * (Gp -> get_CellWidth() + Gp -> get_LineWidth()) + Gp -> get_LineWidth();
     int imageHeight = Gp -> get_H() * (Gp -> get_CellHeight() + Gp -> get_LineWidth()) + Gp -> get_LineWidth();
     canvas = new QPixmap(imageWidth, imageHeight);
@@ -20,8 +20,8 @@ WindowInterface::WindowInterface(GameParams *gp) {
     scorelabel = new QLabel();
     tableau = new QStatusBar();
     tableau -> addWidget(scorelabel);
-    output = new OutputWidget(canvas, Gp);
-    G = new Game(canvas, Gp);
+    output = new OutputWidget(canvas, *Gp);
+    G = new Game(*canvas, *Gp);
     output -> setLayout(canvlayout);
     this -> setCentralWidget(output);
     this -> setWindowTitle("Figurez");

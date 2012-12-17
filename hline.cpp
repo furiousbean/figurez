@@ -6,7 +6,7 @@
 
 const int HLineSize = 5;
 
-Hline::Hline(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) { 
+Hline::Hline(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) { 
     show();
 }
 
@@ -22,7 +22,7 @@ void Hline::show() {
         Gp -> get_CellWidth() * 3 / 4, Gp -> get_CellHeight() / 4));
 }
 
-void Hline::match_pattern(int ** pattern) {
+void Hline::match_pattern(int ** pattern) const {
     for (int j = 0; j < Gp -> get_H(); ++j)
         for (int i = 0; i <= Gp -> get_W() - HLineSize; ++i) {
             int passed = 1;

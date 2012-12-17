@@ -14,14 +14,14 @@ Q_OBJECT
 private:
     QPixmap *canvas;
     Board *board;
-    GameParams *Gp;
+    const GameParams *Gp;
     int selected, Xsel, Ysel, score;
     void draw_grid(); /**< Draw empty grid */
     void update_score(int delta); /**< Update score by delta */
 public:
-    Game(QPixmap *pixmap, GameParams *gp);
+    Game(QPixmap &pixmap, const GameParams &gp);
     ~Game();
-    int get_score(); /**< Return current score */
+    int get_score() const; /**< Return current score */
 public slots:
     void reset(); /**< Reset game */
     void push_field(int Xpos, int Ypos); /**< Receives a mouse click to game field */

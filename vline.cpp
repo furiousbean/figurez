@@ -6,7 +6,7 @@
 
 const int VLineSize = 5;
 
-Vline::Vline(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) { 
+Vline::Vline(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) { 
     show();
 }
 
@@ -21,7 +21,7 @@ void Vline::show() {
         Gp -> get_CellWidth() / 4, Gp -> get_CellHeight() * 3 / 4));
 }
 
-void Vline::match_pattern(int ** pattern) {
+void Vline::match_pattern(int ** pattern) const {
     for (int i = 0; i < Gp -> get_W(); ++i)
         for (int j = 0; j <= Gp -> get_H() - VLineSize; ++j) {
             int passed = 1;

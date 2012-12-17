@@ -4,7 +4,7 @@
 #include <QPixmap>
 #include <QPainter>
 
-Rectangle::Rectangle(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) {
+Rectangle::Rectangle(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpos) : Figure(ncanvas, gp, nXpos, nYpos) {
     show();
 }
 
@@ -20,7 +20,7 @@ void Rectangle::show() {
         Gp -> get_CellWidth() / 2, Gp -> get_CellHeight() / 2));
 }
 
-void Rectangle::match_pattern(int ** pattern) {
+void Rectangle::match_pattern(int ** pattern) const {
     for (int i = 0; i < Gp -> get_W() - 1; ++i)
         for (int j = 0; j < Gp -> get_H() - 1; ++j)
             if (pattern[i][j] && pattern[i + 1][j] && pattern[i][j + 1]  && pattern[i + 1][j + 1]) {

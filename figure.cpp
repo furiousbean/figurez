@@ -2,8 +2,8 @@
 #include "const.h"
 #include "QPainter"
 
-Figure::Figure(QPixmap *ncanvas, GameParams *gp, int nXpos, int nYpos) {
-    canvas = ncanvas; Gp = gp;
+Figure::Figure(QPixmap &ncanvas, const GameParams &gp, int nXpos, int nYpos) {
+    canvas = &ncanvas; Gp = &gp;
     Xpos = nXpos; Ypos = nYpos;
 }
 
