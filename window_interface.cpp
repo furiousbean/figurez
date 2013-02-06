@@ -6,6 +6,7 @@
 #include <QStatusBar>
 #include <QMenuBar>
 #include <QMenu>
+#include <QCoreApplication>
 #include "const.h"
 #include "game.h"
 #include "output_widget.h"
@@ -27,7 +28,7 @@ WindowInterface::WindowInterface(const GameParams &gp) {
     this -> setWindowTitle("Figurez");
     output -> setFixedSize(imageWidth, imageHeight);
     this -> setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    this -> setWindowIcon(QIcon("rabbit-icon.png"));
+    this -> setWindowIcon(QIcon(QCoreApplication::applicationDirPath() + "/rabbit-icon.png"));
     this -> layout() -> setSizeConstraint( QLayout::SetFixedSize );
     this -> setStatusBar(tableau);
     menubar = new QMenuBar;
