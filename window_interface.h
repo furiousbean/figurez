@@ -1,6 +1,6 @@
 #ifndef WINDOW_INTERFACE_H
 #define WINDOW_INTERFACE_H
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 
 #include "const.h"
 #include "game.h"

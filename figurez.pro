@@ -1,4 +1,5 @@
 TEMPLATE = app
+QT+= widgets
 SOURCES	 += main.cpp \
            rectangle.cpp \
            figure.cpp \
@@ -21,3 +22,6 @@ HEADERS += figure.h \
           output_widget.h \
           window_interface.h
 win32:TARGET	 = ../figurez
+
+RESOURCES += \
+    figurez.qrc

@@ -1,4 +1,4 @@
-#include <QApplication>
+#include <QtWidgets/QApplication>
 #include <cmath>
 #include <ctime>
 #include "window_interface.h"

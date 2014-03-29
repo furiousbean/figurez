@@ -1,11 +1,11 @@
-#include <QMainWindow>
-#include <QGridLayout>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QGridLayout>
 #include <QCloseEvent>
 #include <QPixmap>
-#include <QLabel>
-#include <QStatusBar>
-#include <QMenuBar>
-#include <QMenu>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMenu>
 #include <QCoreApplication>
 #include "const.h"
 #include "game.h"
@@ -28,7 +28,7 @@ WindowInterface::WindowInterface(const GameParams &gp) {
     this -> setWindowTitle("Figurez");
     output -> setFixedSize(imageWidth, imageHeight);
     this -> setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    this -> setWindowIcon(QIcon(QCoreApplication::applicationDirPath() + "/rabbit-icon.png"));
+    this -> setWindowIcon(QIcon(":/rabbit-icon.png"));
     this -> layout() -> setSizeConstraint( QLayout::SetFixedSize );
     this -> setStatusBar(tableau);
     menubar = new QMenuBar;
